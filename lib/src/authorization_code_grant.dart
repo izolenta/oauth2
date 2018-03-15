@@ -258,10 +258,10 @@ class AuthorizationCodeGrant {
     } else {
       // The ID is required for this request any time basic auth isn't being
       // used, even if there's no actual client authentication to be done.
-      headers["Accept"] = "application/json";
       body["client_id"] = identifier;
       if (secret != null) body["client_secret"] = secret;
     }
+    headers["Accept"] = "application/json";
 
     var response = await _httpClient.post(this.tokenEndpoint,
         headers: headers, body: body);
